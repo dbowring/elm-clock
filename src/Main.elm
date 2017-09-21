@@ -4,6 +4,7 @@ import List
 import Task
 import Html exposing (Html, div)
 import Html.Attributes
+import Html.Lazy exposing (lazy)
 import Date exposing (Date)
 import AnimationFrame exposing (times)
 import Css exposing (..)
@@ -13,7 +14,7 @@ import Css exposing (..)
 
 
 type alias Model =
-    Maybe Date
+    String
 
 
 type Msg
@@ -35,16 +36,29 @@ main =
 
 
 init =
-    ( Nothing, Task.perform RecvDate Date.now )
+    ( "??:??:??", Task.perform RecvDate Date.now )
 
 
 update msg model =
     case msg of
         RecvDate date ->
-            ( Just date, Cmd.none )
+            ( getNewModel model date, Cmd.none )
 
         Tick currentTime ->
-            ( Just <| Date.fromTime currentTime, Cmd.none )
+            ( getNewModel model <| Date.fromTime currentTime, Cmd.none )
+
+
+{-| Used to preserve referential equality
+-}
+getNewModel oldModel date =
+    let
+        formatted =
+            formatDate date
+    in
+        if formatted == oldModel then
+            oldModel
+        else
+            formatted
 
 
 subscriptions model =
@@ -52,16 +66,13 @@ subscriptions model =
 
 
 view model =
+    lazy realView model
+
+
+realView model =
     div
         [ wrapperStyle ]
-        [ Html.text <|
-            case model of
-                Just date ->
-                    formatDate date
-
-                Nothing ->
-                    "??:??:??"
-        ]
+        [ Html.text model ]
 
 
 
