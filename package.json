@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "elm": "elm"
+    "elm": "elm",
+    "html-minifier": "html-minifier",
+    "build": "elm make --output index.html src/Main.elm && html-minifier --minify-css --minify-js --remove-comments --output index.html index.html"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,7 @@
   },
   "devDependencies": {
     "elm-format": "^0.6.1-alpha",
-    "elm-oracle": "^1.1.1"
+    "elm-oracle": "^1.1.1",
+    "html-minifier": "^3.5.5"
   }
 }
