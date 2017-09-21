@@ -1,0 +1,19 @@
+{
+  "name": "clock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "elm": "elm"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "elm": "^0.18.0"
+  },
+  "devDependencies": {
+    "elm-format": "^0.6.1-alpha",
+    "elm-oracle": "^1.1.1"
+  }
+}
