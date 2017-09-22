@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "elm": "elm",
     "build": "elm make --output index.js src/Main.elm",
-    "minify": "uglifyjs --compress --mangle --reserved Elm --output index.min.js -- index.js",
+    "minify": "uglifyjs2 --compress --warnings=false --mangle --reserved Elm --output index.min.js -- index.js",
     "clean": "rm index.js",
     "make": "npm run build && npm run minify && npm run clean"
   },
@@ -19,6 +19,6 @@
   "devDependencies": {
     "elm-format": "^0.6.1-alpha",
     "elm-oracle": "^1.1.1",
-    "uglify-js": "^3.1.1"
+    "uglify-js2": "^2.1.11"
   }
 }
