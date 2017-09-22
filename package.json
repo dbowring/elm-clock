@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "elm": "elm",
-    "minify": "google-closure-compiler-js --compilationLevel ADVANCED index.js > index.min.js",
     "build": "elm make --output index.js src/Main.elm",
-    "clean": "rm index.js"
+    "minify": "uglifyjs --compress --mangle --reserved Elm --output index.min.js -- index.js",
+    "clean": "rm index.js",
+    "make": "npm run build && npm run minify && npm run clean"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +19,6 @@
   "devDependencies": {
     "elm-format": "^0.6.1-alpha",
     "elm-oracle": "^1.1.1",
-    "google-closure-compiler-js": "^20170910.0.0"
+    "uglify-js": "^3.1.1"
   }
 }
