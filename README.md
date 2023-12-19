@@ -6,5 +6,5 @@ Simple clock written in elm. Uses the `HH:MM:SS` format.
 
 `npm run make` will produce the required `index.min.js`
 
-Hosting here because [Helium](http://heliumfloats.com/) doesn't want to work with local files.
+Hosting here because [Helium](https://slashlos.github.io/Helium/) doesn't want to work with local files.
 
